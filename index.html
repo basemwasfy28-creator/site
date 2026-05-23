@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شركة صيانة عامة | المثلث المصري - صيانة عامة بالامارات</title>
+  <meta name="description" content="شركة صيانة عامة في الامارات - المثلث المصري تقدم خدمات الصيانة العامة للمنشآت السكنية والتجارية. كهرباء، سباكة، تكييف، دهانات، تشطيب">
+  <meta name="keywords" content="شركة صيانة عامة, صيانة عامة, صيانة, شركة صيانة, صيانة منازل, صيانة فلل">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0c0d12;
+      --bg-secondary: #14161e;
+      --bg-card: #1a1d27;
+      --bg-card-hover: #22263a;
+      --accent: #e8b830;
+      --accent-dim: #b8911e;
+      --accent-glow: rgba(232, 184, 48, 0.08);
+      --accent-gradient: linear-gradient(135deg, #e8b830 0%, #d4a020 50%, #c4921a 100%);
+      --text-primary: #f0f0f2;
+      --text-secondary: #9096a8;
+      --text-muted: #5a5f72;
+      --border-color: rgba(232, 184, 48, 0.12);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 30px rgba(0,0,0,0.4);
+      --shadow-glow: 0 0 40px rgba(232, 184, 48, 0.06);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ─── Scrollbar ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+
+    /* ─── Geometric BG Pattern ─── */
+    .bg-pattern {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .bg-pattern::before {
+      content: '';
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle at 30% 20%, rgba(232,184,48,0.03) 0%, transparent 60%);
+      top: -200px;
+      left: -200px;
+    }
+    .bg-pattern::after {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle at 70% 80%, rgba(232,184,48,0.025) 0%, transparent 50%);
+      bottom: -150px;
+      right: -150px;
+    }
+
+    .triangle-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.04;
+    }
+    .triangle-grid svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ─── Floating Nav ─── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.4s ease;
+    }
+    .nav.scrolled {
+      background: rgba(12,13,18,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 24px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-gradient);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 14px;
+      color: var(--bg-primary);
+    }
+    .nav-logo-text {
+      font-weight: 700;
+      font-size: 18px;
+      letter-spacing: -0.3px;
+    }
+    .nav-logo-text span {
+      color: var(--accent);
+    }
+    .nav-phone {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .nav-phone a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    .nav-phone .btn-call-nav {
+      background: var(--accent-gradient);
+      color: var(--bg-primary);
+    }
+    .nav-phone .btn-call-nav:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 30px rgba(232,184,48,0.3);
+    }
+    .nav-phone .btn-wa-nav {
+      border: 1.5px solid rgba(232,184,48,0.3);
+      color: var(--accent);
+    }
+    .nav-phone .btn-wa-nav:hover {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+    .nav-phone-number {
+      direction: ltr;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--accent);
+      letter-spacing: 0.5px;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 24px 60px;
+    }
+    .hero-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-content {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-glow);
+      border: 1px solid var(--border-color);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+    .hero h1 .highlight {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: clamp(16px, 1.3vw, 20px);
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary, .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: var(--bg-primary);
+      box-shadow: 0 4px 25px rgba(232,184,48,0.25);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(232,184,48,0.35);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1.5px solid rgba(255,255,255,0.15);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      transform: translateY(-3px);
+    }
+    .btn-wa {
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 4px 25px rgba(37,211,102,0.2);
+    }
+    .btn-wa:hover {
+      background: #22c35e;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.3);
+    }
+    .btn-wa svg, .btn-primary svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Hero Visual ─── */
+    .hero-visual {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease 0.2s forwards;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-shape {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 1;
+      position: relative;
+    }
+    .hero-shape .triangle-main {
+      width: 100%;
+      height: 100%;
+      background: var(--accent-gradient);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      opacity: 0.08;
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-shape .triangle-sub {
+      width: 75%;
+      height: 75%;
+      background: var(--accent-gradient);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      opacity: 0.05;
+      position: absolute;
+      bottom: 5%;
+      left: 12.5%;
+      animation: float 6s ease-in-out 1s infinite reverse;
+    }
+    .hero-shape .triangle-accent {
+      width: 30%;
+      height: 30%;
+      background: var(--accent);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      opacity: 0.12;
+      position: absolute;
+      top: 35%;
+      left: 35%;
+      animation: float 6s ease-in-out 0.5s infinite;
+    }
+    .hero-shape-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+    }
+    .hero-shape-center .big-number {
+      font-size: clamp(60px, 8vw, 100px);
+      font-weight: 900;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .hero-shape-center .big-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Scroll Indicator ─── */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      opacity: 0.5;
+      animation: fadeUp 1s ease 1.2s forwards;
+      opacity: 0;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--accent-dim), transparent);
+    }
+
+    /* ─── Section Shared ─── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 24px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(30px, 3.5vw, 44px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section-sub {
+      color: var(--text-secondary);
+      font-size: 17px;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header .section-sub {
+      margin: 0 auto;
+    }
+
+    /* ─── Services ─── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    .service-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    .service-card:hover {
+      background: var(--bg-card-hover);
+      transform: translateY(-6px);
+      border-color: rgba(232,184,48,0.2);
+      box-shadow: var(--shadow-glow);
+    }
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--accent-glow);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 24px;
+      border: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+    .service-card:hover .service-icon {
+      background: var(--accent-gradient);
+      border-color: transparent;
+    }
+    .service-card:hover .service-icon svg {
+      filter: brightness(0) saturate(0);
+    }
+    .service-card h3 {
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ─── Stats ─── */
+    .stats {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 40px 20px;
+      border-left: 1px solid var(--border-color);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .stat-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .stat-item:last-child {
+      border-left: none;
+    }
+    .stat-number {
+      font-size: clamp(32px, 3vw, 44px);
+      font-weight: 900;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    /* ─── About ─── */
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.8s ease;
+    }
+    .about-visual.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .about-shape {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-shape::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background: conic-gradient(from 0deg, transparent, rgba(232,184,48,0.03), transparent, rgba(232,184,48,0.06), transparent);
+      animation: rotate 20s linear infinite;
+    }
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+    .about-shape-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .about-shape-content .big-triangle {
+      font-size: 80px;
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .about-shape-content .about-years {
+      font-size: 64px;
+      font-weight: 900;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-top: 8px;
+    }
+    .about-shape-content .about-sub {
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .about-text {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: all 0.8s ease 0.15s;
+    }
+    .about-text.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .about-text h2 {
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .about-text p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .about-feature .check {
+      width: 22px;
+      height: 22px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      color: var(--bg-primary);
+      font-weight: 900;
+    }
+
+    /* ─── CTA Section ─── */
+    .cta-section {
+      text-align: center;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+    }
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cta-inner h2 {
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    .cta-inner p {
+      color: var(--text-secondary);
+      font-size: 17px;
+      margin-bottom: 36px;
+    }
+    .cta-phone-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      direction: ltr;
+    }
+    .cta-phone-number {
+      font-size: clamp(28px, 3vw, 38px);
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: 1px;
+    }
+    .cta-phone-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-gradient);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+    .cta-phone-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--bg-primary);
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ─── Floating Bottom CTA ─── */
+    .bottom-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(12,13,18,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid var(--border-color);
+      padding: 12px 16px;
+      display: none;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .bottom-cta.show {
+      transform: translateY(0);
+    }
+    .bottom-cta-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .bottom-cta-phone {
+      direction: ltr;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .bottom-cta-actions {
+      display: flex;
+      gap: 10px;
+    }
+    .bottom-cta .btn-bottom {
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+    .btn-bottom-call {
+      background: var(--accent-gradient);
+      color: var(--bg-primary);
+    }
+    .btn-bottom-call:hover {
+      transform: scale(1.04);
+    }
+    .btn-bottom-wa {
+      background: #25d366;
+      color: #fff;
+    }
+    .btn-bottom-wa:hover {
+      background: #22c35e;
+      transform: scale(1.04);
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+    }
+    footer p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      .hero p {
+        margin: 0 auto 36px;
+      }
+      .hero-cta {
+        justify-content: center;
+      }
+      .hero-visual {
+        display: none;
+      }
+      .stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-item:nth-child(2) {
+        border-left: none;
+      }
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .about-visual {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+      section {
+        padding: 60px 20px;
+      }
+      .nav-phone-number {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        padding: 12px 16px;
+      }
+      .nav-phone a {
+        padding: 6px 14px;
+        font-size: 12px;
+      }
+      .nav-logo-text {
+        font-size: 15px;
+      }
+      .hero h1 {
+        font-size: 30px;
+      }
+      .hero-cta .btn-primary,
+      .hero-cta .btn-secondary {
+        padding: 14px 24px;
+        font-size: 14px;
+        flex: 1;
+        justify-content: center;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-inner {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-item {
+        padding: 24px 12px;
+      }
+      .bottom-cta {
+        display: block;
+      }
+      .bottom-cta.show {
+        display: block;
+      }
+      .bottom-cta-phone {
+        font-size: 15px;
+      }
+      .bottom-cta .btn-bottom {
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+      .bottom-cta .btn-bottom span {
+        display: none;
+      }
+      .cta-phone-display {
+        flex-direction: column;
+      }
+    }
+
+    @media (min-width: 601px) {
+      .bottom-cta {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Background ─── -->
+  <div class="bg-pattern"></div>
+  <div class="triangle-grid">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <defs>
+        <pattern id="tri" width="20" height="17.32" patternUnits="userSpaceOnUse">
+          <polygon points="10,0 20,8.66 10,17.32 0,8.66" fill="none" stroke="#e8b830" stroke-width="0.3"/>
+        </pattern>
+      </defs>
+      <rect width="100" height="100" fill="url(#tri)"/>
+    </svg>
+  </div>
+
+  <!-- ─── Nav ─── -->
+  <nav class="nav" id="navbar">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">▲</div>
+      <div class="nav-logo-text">المثلث <span>المصري</span></div>
+    </div>
+    <div class="nav-phone">
+      <a href="tel:+971505521643" class="btn-call-nav">📞 اتصل الآن</a>
+      <a href="https://wa.me/971505521643" target="_blank" rel="noopener" class="btn-wa-nav">💬 واتساب</a>
+      <span class="nav-phone-number">+971 50 552 1643</span>
+    </div>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">معتمدون • خبرة أكثر من 15 عاماً</div>
+        <h1>
+          <span class="highlight">شركة صيانة عامة</span><br>
+          في الامارات — المثلث المصري
+        </h1>
+        <p>
+          نقدم خدمات الصيانة العامة المتكاملة للمنشآت السكنية والتجارية.
+          كهرباء، سباكة، تكييف، دهانات، تشطيب — فريق متكامل بمعايير احترافية.
+        </p>
+        <div class="hero-cta">
+          <a href="tel:+971505521643" class="btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            اتصل بنا
+          </a>
+          <a href="https://wa.me/971505521643" target="_blank" rel="noopener" class="btn-wa">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            واتساب
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-shape">
+          <div class="triangle-main"></div>
+          <div class="triangle-sub"></div>
+          <div class="triangle-accent"></div>
+          <div class="hero-shape-center">
+            <div class="big-number">▲</div>
+            <div class="big-label">صيانة عامة</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>اسفل</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ─── Services ─── -->
+  <section id="services">
+    <div class="section-header">
+      <span class="section-label">خدماتنا</span>
+      <h2 class="section-title">خدمات الصيانة العامة</h2>
+      <p class="section-sub">فريق متكامل يغطي جميع احتياجات الصيانة للمنازل والفلل والمكاتب والمحلات التجارية</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card" data-delay="0">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>صيانة كهربائية</h3>
+        <p>تركيب واصلاح وصيانة جميع الاعطال الكهربائية — لوحات التوزيع، قواطع، انارة، توصيلات معززة بالامان.</p>
+      </div>
+      <div class="service-card" data-delay="100">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        </div>
+        <h3>صيانة سباكة</h3>
+        <p>كشف واصلاح تسريبات المياه، تركيب وصيانة شبكات الصرف، سخانات، خلاطات، مضخات — ضمان على جميع الاعمال.</p>
+      </div>
+      <div class="service-card" data-delay="200">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>صيانة تكييف</h3>
+        <p>تركيب وتنظيف وصيانة جميع انواع المكيفات — مركزية، سبليت، مخفية. فحص غاز، كويبرسور، وتنظيف كويلات.</p>
+      </div>
+      <div class="service-card" data-delay="300">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <h3>صيانة مباني</h3>
+        <p>ترميم وصيانة المباني — معالجة تشققات، عزل اسطح، صيانة واجهات، اصلاح تسربات الخرسانة واللياسة.</p>
+      </div>
+      <div class="service-card" data-delay="400">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <h3>دهانات وتشطيب</h3>
+        <p>دهان داخلي وخارجي بمواد عالية الجودة، تشطيب فاخر، جبس بورد، ورق جدران — تنفيذ بدقة واحترافية.</p>
+      </div>
+      <div class="service-card" data-delay="500">
+        <div class="service-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <h3>صيانة عامة</h3>
+        <p>خدمة شاملة لجميع اعمال الصيانة المنزلية والتجارية — نجارة، زجاج، حدادة، تركيب اثاث، وصيانة شاملة للمنشآت.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Stats ─── -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stat-item" data-delay="0">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">عاماً من الخبرة</div>
+      </div>
+      <div class="stat-item" data-delay="100">
+        <div class="stat-number">850+</div>
+        <div class="stat-label">مشروع منجز</div>
+      </div>
+      <div class="stat-item" data-delay="200">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">عملاء راضون</div>
+      </div>
+      <div class="stat-item" data-delay="300">
+        <div class="stat-number">45+</div>
+        <div class="stat-label">فني متخصص</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── About ─── -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-visual">
+        <div class="about-shape">
+          <div class="about-shape-content">
+            <div class="big-triangle" style="font-size:60px; opacity:0.12; line-height:1; font-weight:900;">▲</div>
+            <div class="about-years">2009</div>
+            <div class="about-sub">تأسست عام</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">من نحن</span>
+        <h2>أفضل <span style="color:var(--accent)">شركة صيانة عامة</span> في الامارات</h2>
+        <p>
+          المثلث المصري — اسم موثوق في عالم الصيانة العامة بدولة الامارات العربية المتحدة.
+          نقدم خدمات متكاملة بمعايير عالمية واسعار تنافسية، مع التزام تام بالجودة والمواعيد.
+        </p>
+        <p>
+          فريقنا مكون من مهندسين وفنيين متخصصين بخبرات تتجاوز 15 عاماً في مجال الصيانة العامة
+          بكافة تخصصاتها — من الكهرباء والسباكة إلى التكييف والتشطيب.
+        </p>
+        <div class="about-features">
+          <div class="about-feature"><span class="check">✓</span> فنيين معتمدين</div>
+          <div class="about-feature"><span class="check">✓</span> ضمان على جميع الاعمال</div>
+          <div class="about-feature"><span class="check">✓</span> اسعار تنافسية</div>
+          <div class="about-feature"><span class="check">✓</span> خدمة طوارئ 24/7</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA Section ─── -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <span class="section-label">تواصل الآن</span>
+      <h2>احصل على خدمة <span style="color:var(--accent)">صيانة عامة</span> احترافية اليوم</h2>
+      <p>اتصل بنا مباشرة أو عبر واتساب — فريقنا جاهز للرد على استفساراتكم وتقديم العروض المناسبة</p>
+      <div class="cta-phone-display">
+        <div class="cta-phone-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <span class="cta-phone-number" dir="ltr">+971 50 552 1643</span>
+      </div>
+      <div class="cta-buttons">
+        <a href="tel:+971505521643" class="btn-primary" style="padding:18px 40px; font-size:18px;">
+          📞 اتصل بنا الآن
+        </a>
+        <a href="https://wa.me/971505521643" target="_blank" rel="noopener" class="btn-wa" style="padding:18px 40px; font-size:18px;">
+          💬 واتساب
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <p>© 2026 المثلث المصري للصيانة العامة — جميع الحقوق محفوظة</p>
+  </footer>
+
+  <!-- ─── Floating Bottom CTA ─── -->
+  <div class="bottom-cta" id="bottomCta">
+    <div class="bottom-cta-inner">
+      <div class="bottom-cta-phone">📞 +971 50 552 1643</div>
+      <div class="bottom-cta-actions">
+        <a href="tel:+971505521643" class="btn-bottom btn-bottom-call">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>اتصال</span>
+        </a>
+        <a href="https://wa.me/971505521643" target="_blank" rel="noopener" class="btn-bottom btn-bottom-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span>واتساب</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ─── Nav scroll effect ───
+    const nav = document.getElementById('navbar');
+    const bottomCta = document.getElementById('bottomCta');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      nav.classList.toggle('scrolled', scrollY > 60);
+
+      if (window.innerWidth <= 600) {
+        if (scrollY > 300) {
+          bottomCta.classList.add('show');
+        } else {
+          bottomCta.classList.remove('show');
+        }
+      } else {
+        if (scrollY > 500) {
+          bottomCta.classList.add('show');
+        } else {
+          bottomCta.classList.remove('show');
+        }
+      }
+
+      lastScroll = scrollY;
+    });
+
+    // ─── Intersection Observer for cards ───
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = parseInt(entry.target.dataset.delay) || 0;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.service-card, .stat-item, .about-visual, .about-text').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ─── Trigger initial animations ───
+    window.addEventListener('load', () => {
+      document.querySelector('.hero-content').style.animationPlayState = 'running';
+      document.querySelector('.hero-visual').style.animationPlayState = 'running';
+    });
+  </script>
+
+</body>
+</html>
