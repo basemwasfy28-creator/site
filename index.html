@@ -964,6 +964,23 @@
         display: block;
       }
     }
+    .testimonials { padding: 80px 24px; background: var(--bg-secondary); }
+    .testimonials-inner { max-width: 1080px; margin: 0 auto; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 40px; }
+    .testimonial-card { background: var(--bg-card); border: 1px solid #262b3a; border-radius: 14px; padding: 24px; }
+    .testimonial-card .quote { color: var(--accent); font-size: 30px; line-height: 1; }
+    .testimonial-card p { color: var(--text-secondary); font-size: 15px; line-height: 1.8; margin: 12px 0 16px; }
+    .testimonial-card .author { color: var(--text-primary); font-weight: 700; }
+    .testimonial-card .author span { display: block; color: var(--text-muted); font-size: 13px; font-weight: 400; margin-top: 4px; }
+    .stars { color: var(--accent); letter-spacing: 2px; }
+    .areas-section { padding: 80px 24px; }
+    .areas-inner { max-width: 1080px; margin: 0 auto; text-align: center; }
+    .areas-tags { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 32px; }
+    .area-tag { background: var(--bg-card); border: 1px solid #262b3a; border-radius: 999px; padding: 10px 22px; color: var(--text-secondary); font-size: 15px; }
+    .btn-quote { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 2px solid var(--accent); color: var(--accent); padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; transition: all .25s; cursor: pointer; }
+    .btn-quote:hover { background: var(--accent); color: var(--bg-primary); }
+    .hero-trust { margin-top: 14px; color: var(--text-secondary); font-size: 14px; }
+    .hero-trust strong { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -993,7 +1010,7 @@
     </div>
     <div class="nav-phone">
       <a href="tel:+971505521643" class="btn-call-nav">📞 اتصل الآن</a>
-      <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF" target="_blank" rel="noopener" class="btn-wa-nav">💬 واتساب</a>
+      <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B5%D8%A8%D8%A7%D8%BA%D8%A9%20%D9%88%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF.%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%3A%20%5B%D8%A7%D9%83%D8%AA%D8%A8%20%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%5D" target="_blank" rel="noopener" class="btn-wa-nav">💬 واتساب</a>
       <span class="nav-phone-number">+971 50 552 1643</span>
     </div>
   </nav>
@@ -1002,7 +1019,7 @@
   <section class="hero" id="hero">
     <div class="hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">معتمدون • خبرة أكثر من 15 عاماً</div>
+        <div class="hero-badge">معتمدون • خبرة أكثر من 15 عاماً • كشف وزيارة مجانية</div>
         <h1>
           <span class="highlight">صباغ وشركة دهانات وجبسن بورد</span><br>
           في دبي والامارات — المثلث المصري
@@ -1016,11 +1033,13 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             اتصل بنا
           </a>
-          <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF" target="_blank" rel="noopener" class="btn-wa">
+          <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B5%D8%A8%D8%A7%D8%BA%D8%A9%20%D9%88%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF.%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%3A%20%5B%D8%A7%D9%83%D8%AA%D8%A8%20%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%5D" target="_blank" rel="noopener" class="btn-wa">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             واتساب
           </a>
+          <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B5%D8%A8%D8%A7%D8%BA%D8%A9%20%D9%88%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF.%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%3A%20%5B%D8%A7%D9%83%D8%AA%D8%A8%20%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%5D" target="_blank" rel="noopener" class="btn-quote">💰 اطلب عرض سعر مجاني</a>
         </div>
+        <p class="hero-trust">✅ <strong>عرض سعر مجاني خلال 24 ساعة</strong> • كشف وزيارة بدون أي التزام</p>
       </div>
       <div class="hero-visual">
         <div class="hero-shape">
@@ -1148,6 +1167,68 @@
     </div>
   </section>
 
+  <!-- ─── Testimonials ─── -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonials-inner">
+      <div class="section-header">
+        <span class="section-label">آراء عملائنا</span>
+        <h2 class="section-title">ماذا يقول عملاؤنا عنا</h2>
+        <p class="section-sub">تجارب حقيقية من عملاء في دبي وجميع الإمارات</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="quote">“</div>
+          <div class="stars">★★★★★</div>
+          <p>صبغوا شقتي بالكامل خلال 3 أيام بنفس الموعد المتفق عليه. شغل نظيف جداً والألوان طلعت زي ما طلبت بالضبط.</p>
+          <div class="author">أحمد م.<span>ند الشبا — دبي</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">“</div>
+          <div class="stars">★★★★★</div>
+          <p>تعاملت معهم لتركيب جبس بورد لصالة الفيلا. فريق محترف وأسعارهم منافسة، والتشطيب ممتاز. أنصح فيهم.</p>
+          <div class="author">سارة العلي<span>جميرا — دبي</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">“</div>
+          <div class="stars">★★★★★</div>
+          <p>طلبت عرض سعر عبر الواتساب وردوا خلال ساعة. صباغة واجهة الفيلا بجودة عالية وضمان على الشغل. تجربة ممتازة.</p>
+          <div class="author">محمد رشاد<span>البرشاء — دبي</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="quote">“</div>
+          <div class="stars">★★★★★</div>
+          <p>عاملين شغل دهانات وديكورات جبسية لمكتبنا التجاري. التزموا بالمواعيد وخلّوا المكان نظيف بعد الانتهاء. شكراً.</p>
+          <div class="author">خالد الإبراهيم<span>ديرة — دبي</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Service Areas ─── -->
+  <section class="areas-section" id="areas">
+    <div class="areas-inner">
+      <span class="section-label">مناطق الخدمة</span>
+      <h2 class="section-title">نخدم جميع مناطق دبي والإمارات</h2>
+      <p class="section-sub">فريقنا يغطي دبي والشارقة وعجمان وأبوظبي وجميع الإمارات — كشف وزيارة مجانية</p>
+      <div class="areas-tags">
+        <span class="area-tag">دبي</span>
+        <span class="area-tag">الشارقة</span>
+        <span class="area-tag">عجمان</span>
+        <span class="area-tag">أبوظبي</span>
+        <span class="area-tag">العين</span>
+        <span class="area-tag">رأس الخيمة</span>
+        <span class="area-tag">الفجيرة</span>
+        <span class="area-tag">أم القيوين</span>
+        <span class="area-tag">ند الشبا</span>
+        <span class="area-tag">جميرا</span>
+        <span class="area-tag">البرشاء</span>
+        <span class="area-tag">ديرة</span>
+        <span class="area-tag">مارينا</span>
+        <span class="area-tag">الخوانيج</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── CTA Section ─── -->
   <section class="cta-section">
     <div class="cta-inner">
@@ -1164,10 +1245,14 @@
         <a href="tel:+971505521643" class="btn-primary" style="padding:18px 40px; font-size:18px;">
           📞 اتصل بنا الآن
         </a>
-        <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF" target="_blank" rel="noopener" class="btn-wa" style="padding:18px 40px; font-size:18px;">
+        <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B5%D8%A8%D8%A7%D8%BA%D8%A9%20%D9%88%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF.%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%3A%20%5B%D8%A7%D9%83%D8%AA%D8%A8%20%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%5D" target="_blank" rel="noopener" class="btn-wa" style="padding:18px 40px; font-size:18px;">
           💬 واتساب
         </a>
+        <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B5%D8%A8%D8%A7%D8%BA%D8%A9%20%D9%88%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF.%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%3A%20%5B%D8%A7%D9%83%D8%AA%D8%A8%20%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%5D" target="_blank" rel="noopener" class="btn-quote" style="padding:18px 40px; font-size:18px;">
+          💰 اطلب عرض سعر مجاني
+        </a>
       </div>
+      <p style="margin-top:18px; color:var(--text-secondary); font-size:15px;">✅ عرض سعر مجاني خلال 24 ساعة • كشف وزيارة بدون التزام • ضمان على جميع الأعمال</p>
     </div>
   </section>
 
@@ -1189,7 +1274,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <span>اتصال</span>
         </a>
-        <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF" target="_blank" rel="noopener" class="btn-bottom btn-bottom-wa">
+        <a href="https://wa.me/971505521643?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%20%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B5%D8%A8%D8%A7%D8%BA%D8%A9%20%D9%88%D8%A7%D9%84%D8%AF%D9%87%D8%A7%D9%86%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%AC%D8%A8%D8%B3%D9%86%20%D8%A8%D9%88%D8%B1%D8%AF.%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%3A%20%5B%D8%A7%D9%83%D8%AA%D8%A8%20%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%5D" target="_blank" rel="noopener" class="btn-bottom btn-bottom-wa">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span>واتساب</span>
         </a>
